@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday Mrithveen 🎂</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #8e2de2, #ff6ec4);
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      margin-top: 30px;
+      font-size: 28px;
+      color: #ffdde1;
+      text-shadow: 1px 1px 5px #000;
+    }
+
+    .typewriter {
+      font-size: 20px;
+      color: #fff;
+      margin: 20px;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #fff;
+      animation: typing 5s steps(40, end), blink .75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      from, to { border-color: transparent }
+      50% { border-color: white; }
+    }
+
+    .big-text {
+      font-size: 28px;
+      margin: 20px;
+      color: #ffcad4;
+      text-shadow: 2px 2px 10px #000;
+    }
+
+    .tap-here {
+      margin-top: 30px;
+      padding: 12px 24px;
+      background: #ff4e88;
+      border-radius: 30px;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+
+    .tap-here:hover {
+      transform: scale(1.1);
+    }
+
+    .photo {
+      margin-top: 20px;
+      display: none;
+      opacity: 0;
+      transition: opacity 2s;
+      max-width: 300px;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+
+    .para {
+      display: none;
+      margin: 20px auto;
+      font-size: 18px;
+      line-height: 1.6;
+      max-width: 80%;
+      color: #fff7f7;
+      text-shadow: 1px 1px 5px #000;
+    }
+
+    .big-end {
+      font-size: 26px;
+      margin: 25px;
+      font-weight: bold;
+      color: #ffe6f7;
+      display: none;
+      text-shadow: 2px 2px 10px #000;
+    }
+
+    /* Hearts & kisses animation */
+    .heart {
+      position: fixed;
+      top: -10px;
+      font-size: 24px;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>💖 A Birthday Wish by Your Mithra ❤️</h1>
+
+  <div class="typewriter">✨ To my favorite boy, my most special person…</div>
+
+  <div class="big-text">💕 Happiest Birthday, my dearest ❤️</div>
+
+  <div class="tap-here" onclick="reveal()">💌 Tap Here 💌</div>
+
+  <img src="photo.jpg" alt="Special" class="photo" id="photo">
+
+  <div class="para" id="para">
+    You’ve given me more happiness than I could ever ask for, and you’ll always be one of the most precious parts of my life. 💌<br><br>
+    “I don’t know how long this will last… but if it could last for a lifetime, that would be the most beautiful thing ever.” ❤️💕<br><br>
+    Please never become a stranger to me, because my heart only feels complete with you. Maybe I don’t mean much to you, but to me, you’ll always be my first priority, my everything. No matter what, my heart will always choose you. ❤️<br><br>
+    I’m sorry that I couldn’t give you any gift… 💌<br>
+    “You are the most special person in my life… no one else has ever been this close to my heart the way you are.”  
+  </div>
+
+  <div class="big-end" id="end">❤️ Once again, Happy Birthday, Mrithveen ✨💖</div>
+
+  <script>
+    function reveal() {
+      let photo = document.getElementById("photo");
+      let para = document.getElementById("para");
+      let end = document.getElementById("end");
+
+      photo.style.display = "block";
+      setTimeout(() => photo.style.opacity = "1", 100);
+
+      setTimeout(() => para.style.display = "block", 2000);
+      setTimeout(() => end.style.display = "block", 3000);
+
+      // Hearts & kisses rain
+      for (let i = 0; i < 25; i++) {
+        let heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerText = Math.random() > 0.5 ? "💖" : "😘";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 5000);
+      }
+    }
+  </script>
+
+</body>
+</html>
