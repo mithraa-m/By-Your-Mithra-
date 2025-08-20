@@ -1,0 +1,92 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #ffe6eb, #fff);
+  overflow: hidden;
+  text-align: center;
+  color: #333; /* darker font */
+}
+
+/* Full screen sections */
+.screen {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Tap Here Screen */
+.tap-text {
+  font-size: 2rem;
+  background: #ff6fa1;
+  color: white;
+  padding: 20px 40px;
+  border-radius: 15px;
+  animation: pulse 1.5s infinite;
+  cursor: pointer;
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Constant Header */
+.constant {
+  font-size: 1.5rem;
+  margin-top: 10px;
+  color: #444;
+}
+
+/* Special Heading (Happy Birthday) */
+.special {
+  font-size: 2rem;
+  margin: 15px 0;
+  font-family: 'Brush Script MT', cursive;
+  color: #c71585; /* different decent pink shade */
+  text-shadow: 2px 2px #f9c;
+}
+
+/* Typewriter Text */
+#typewriter {
+  font-size: 1.2rem;
+  min-height: 40px;
+  margin-top: 10px;
+}
+
+/* Photo */
+.fade-photo {
+  width: 80%;
+  max-width: 350px;
+  border-radius: 20px;
+  margin-top: 20px;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+}
+.photo-container.show .fade-photo {
+  opacity: 1;
+}
+
+/* Paragraph Message */
+.message {
+  font-size: 1rem;
+  margin: 20px auto;
+  max-width: 600px;
+  line-height: 1.6;
+  color: #222;
+  padding: 0 10px;
+}
+
+/* Final Line */
+.final {
+  font-size: 1.5rem;
+  margin-top: 20px;
+  color: #b22222;
+  font-weight: bold;
+}
