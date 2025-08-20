@@ -4,36 +4,160 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Birthday Surprise</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #8e44ad, #e056fd); /* Purple + Pink */
+      color: #f1f1f1;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      margin-top: 20px;
+      font-size: 24px;
+      color: #fff;
+    }
+
+    .typewriter {
+      font-size: 20px;
+      margin: 20px 0;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #fff;
+      display: inline-block;
+      animation: typing 6s steps(30, end), blink 0.8s infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+
+    .highlight {
+      font-size: 26px;
+      font-weight: bold;
+      color: #ffdde1;
+      font-family: "Georgia", serif;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+    }
+
+    #tap {
+      margin-top: 50px;
+      font-size: 22px;
+      padding: 15px 30px;
+      background: #fff;
+      color: #8e44ad;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    #tap:hover {
+      background: #f1c6f1;
+      transform: scale(1.05);
+    }
+
+    .hidden-section {
+      display: none;
+      margin-top: 30px;
+    }
+
+    .photo {
+      width: 250px;
+      border-radius: 20px;
+      opacity: 0;
+      transition: opacity 3s ease; /* Slower fade-in */
+      margin-top: 20px;
+    }
+
+    .para {
+      margin: 20px auto;
+      max-width: 600px;
+      text-align: center;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #fff;
+      opacity: 0;
+      animation: typingText 12s steps(100, end) forwards; /* Slow typewriter */
+      white-space: pre-line;
+    }
+
+    @keyframes typingText {
+      from { width: 0; opacity: 1; }
+      to { width: 100%; opacity: 1; }
+    }
+
+    .bigwish {
+      font-size: 28px;
+      font-weight: bold;
+      color: #ffb6c1;
+      margin-top: 25px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+    }
+
+    /* Falling hearts & kisses */
+    .fall {
+      position: fixed;
+      top: -10px;
+      font-size: 24px;
+      animation: fall 8s linear infinite; /* slower fall */
+    }
+
+    @keyframes fall {
+      to { transform: translateY(110vh); }
+    }
+  </style>
 </head>
 <body>
-  <!-- First Screen -->
-  <div id="tap-screen" class="screen">
-    <h1 class="tap-text">🎁 Tap Here 🎁</h1>
+  <h1>✨ A Birthday Wish by Your Mithra ❤️ ✨</h1>
+
+  <div class="typewriter">To my favorite boy, my most special person…</div>
+  <br>
+  <div class="highlight">💕 Happiest Birthday, my dearest ❤️</div>
+
+  <br><br>
+  <button id="tap">💖 Tap Here 💖</button>
+
+  <div class="hidden-section" id="hidden">
+    <img src="yourphoto.jpg" alt="Special Photo" class="photo" id="photo">
+    <p class="para" id="para">You’ve given me more happiness than I could ever ask for, and you’ll always be one of the most precious parts of my life. 💌 
+“I don’t know how long this will last… but if it could last for a lifetime, that would be the most beautiful thing ever.” ❤️💕
+
+Please never become a stranger to me, because my heart only feels complete with you. Maybe I don’t mean much to you, but to me, you’ll always be my first priority, my everything. No matter what, my heart will always choose you. ❤️
+
+I’m sorry that I couldn’t give you any gift…💌 “You are the most special person in my life… no one else has ever been this close to my heart the way you are.”</p>
+
+    <div class="bigwish">❤️ Once again, Happy Birthday, Mrithveen ✨💖</div>
   </div>
 
-  <!-- Second Screen -->
-  <div id="main-screen" class="screen hidden">
-    <h2 class="constant">A Birthday Wish by Your Mithra ❤️</h2>
-    <h3 id="typewriter"></h3>
-    <h1 class="special">💕 Happiest Birthday, my dearest Mrithveen❤️</h1>
+  <script>
+    const tapBtn = document.getElementById("tap");
+    const hidden = document.getElementById("hidden");
+    const photo = document.getElementById("photo");
+    const para = document.getElementById("para");
 
-    <!-- Photo + Para -->
-    <div class="photo-container hidden" id="photo-container">
-      <img src="photo.jpg" alt="Special" class="fade-photo">
-      <p class="message">
-        You’ve given me more happiness , and you’ll always be one of the most precious parts of my life. 💌  
-        “I don’t know how long this will last… but if it could last for a lifetime, that would be the most beautiful thing ever.” ❤️💕  
-        Please never become a stranger to me, because my heart only feels complete with you.  
-        Maybe I don’t mean much to you, but to me, you’ll always be my first priority, my everything.  
-        No matter what, my heart will always choose you. ❤️  
-        I’m sorry that I couldn’t give you any gift…💌  
-        “You are the most special person in my life… no one else has ever been this close to my heart the way you are.”  
-      </p>
-      <h2 class="final">❤️ Once again, Happy Birthday, Mrithveen 🥰💖</h2>
-    </div>
-  </div>
+    tapBtn.addEventListener("click", () => {
+      hidden.style.display = "block";
+      setTimeout(() => { photo.style.opacity = 1; }, 200);
+      setTimeout(() => { para.style.opacity = 1; }, 2500);
 
-  <script src="script.js"></script>
+      // hearts & kisses fall
+      setInterval(() => {
+        const emoji = document.createElement("div");
+        emoji.classList.add("fall");
+        emoji.style.left = Math.random() * 100 + "vw";
+        emoji.innerText = Math.random() > 0.5 ? "❤️" : "😘";
+        document.body.appendChild(emoji);
+
+        setTimeout(() => { emoji.remove(); }, 8000);
+      }, 900); // slower speed
+    });
+  </script>
 </body>
 </html>
