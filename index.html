@@ -20,6 +20,7 @@
       color: #fff;
     }
 
+    /* Typewriter for intro */
     .typewriter {
       font-size: 20px;
       margin: 20px 0;
@@ -27,24 +28,15 @@
       overflow: hidden;
       border-right: 3px solid #fff;
       display: inline-block;
-      animation: typing 6s steps(30, end), blink 0.8s infinite;
-    }
-
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-
-    @keyframes blink {
-      50% { border-color: transparent }
+      min-height: 60px; /* reserve space for multiple lines */
     }
 
     .highlight {
       font-size: 26px;
       font-weight: bold;
-      color: #ffdde1;
+      color: #111; /* dark bold */
       font-family: "Georgia", serif;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
     }
 
     #tap {
@@ -84,13 +76,8 @@
       line-height: 1.6;
       color: #fff;
       opacity: 0;
-      animation: typingText 12s steps(100, end) forwards; /* Slow typewriter */
+      transition: opacity 3s ease;
       white-space: pre-line;
-    }
-
-    @keyframes typingText {
-      from { width: 0; opacity: 1; }
-      to { width: 100%; opacity: 1; }
     }
 
     .bigwish {
@@ -117,7 +104,8 @@
 <body>
   <h1>✨ A Birthday Wish by Your Mithra ❤️ ✨</h1>
 
-  <div class="typewriter">To my favorite boy, my most special person…</div>
+  <!-- Intro typing effect -->
+  <div id="intro" class="typewriter"></div>
   <br>
   <div class="highlight">💕 Happiest Birthday, my dearest Mrithveen ❤️</div>
 
@@ -142,6 +130,33 @@ I’m sorry that I couldn’t give you any gift…💌 “You are the most speci
     const photo = document.getElementById("photo");
     const para = document.getElementById("para");
 
+    // Typewriter intro
+    const intro = document.getElementById("intro");
+    const messages = [
+      "To my favorite boy...",
+      "My most special person...",
+      "Mrithveen Thangameyy ❤️"
+    ];
+    let msgIndex = 0;
+    let charIndex = 0;
+
+    function typeWriter() {
+      if (msgIndex < messages.length) {
+        if (charIndex < messages[msgIndex].length) {
+          intro.innerHTML += messages[msgIndex].charAt(charIndex);
+          charIndex++;
+          setTimeout(typeWriter, 100); // typing speed
+        } else {
+          intro.innerHTML += "<br>";
+          msgIndex++;
+          charIndex = 0;
+          setTimeout(typeWriter, 700); // delay before next line
+        }
+      }
+    }
+    typeWriter();
+
+    // Tap button event
     tapBtn.addEventListener("click", () => {
       hidden.style.display = "block";
       setTimeout(() => { photo.style.opacity = 1; }, 200);
