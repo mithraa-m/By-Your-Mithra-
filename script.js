@@ -1,55 +1,50 @@
-const tapScreen = document.getElementById("tap-screen");
-const mainScreen = document.getElementById("main-screen");
-const photoContainer = document.getElementById("photo-container");
-const typewriter = document.getElementById("typewriter");
+// --- Typewriter intro ---
+const intro = document.getElementById("intro");
 
-let text = "To my favorite boy, my most special person…";
-let i = 0;
+const messages = [
+  "To my favorite boy...",
+  "My most special person...",
+  "Mrithveen Thangameyy ❤️"
+];
 
-// Tap screen → show next screen
-tapScreen.addEventListener("click", () => {
-  tapScreen.classList.add("hidden");
-  mainScreen.classList.remove("hidden");
-  typeWriter();
-  startFalling();
-  setTimeout(() => {
-    photoContainer.classList.remove("hidden");
-    photoContainer.classList.add("show");
-  }, 4000); // after typewriter
-});
+let msgIndex = 0;
+let charIndex = 0;
 
-// Typewriter (slower speed)
 function typeWriter() {
-  if (i < text.length) {
-    typewriter.innerHTML += text.charAt(i);
-    i++;
-    setTimeout(typeWriter, 120); // slower typing
+  if (msgIndex < messages.length) {
+    if (charIndex < messages[msgIndex].length) {
+      intro.innerHTML += messages[msgIndex].charAt(charIndex);
+      charIndex++;
+      setTimeout(typeWriter, 100); // typing speed
+    } else {
+      intro.innerHTML += "<br>"; // new line after each sentence
+      msgIndex++;
+      charIndex = 0;
+      setTimeout(typeWriter, 700); // delay before next line
+    }
   }
 }
+typeWriter();
 
-// Falling Hearts & Kisses
-function startFalling() {
+// --- Tap button event ---
+const tapBtn = document.getElementById("tap");
+const hidden = document.getElementById("hidden");
+const photo = document.getElementById("photo");
+const para = document.getElementById("para");
+
+tapBtn.addEventListener("click", () => {
+  hidden.style.display = "block";
+  setTimeout(() => { photo.style.opacity = 1; }, 200);
+  setTimeout(() => { para.style.opacity = 1; }, 2500);
+
+  // hearts & kisses fall
   setInterval(() => {
     const emoji = document.createElement("div");
-    emoji.innerHTML = Math.random() > 0.5 ? "💋" : "💖";
-    emoji.style.position = "fixed";
+    emoji.classList.add("fall");
     emoji.style.left = Math.random() * 100 + "vw";
-    emoji.style.fontSize = Math.random() * 20 + 20 + "px";
-    emoji.style.top = "-20px";
-    emoji.style.animation = "fall 6s linear forwards"; // slower fall
+    emoji.innerText = Math.random() > 0.5 ? "❤️" : "😘";
     document.body.appendChild(emoji);
 
-    setTimeout(() => emoji.remove(), 7000);
-  }, 800);
-}
-
-// CSS Falling animation
-const style = document.createElement("style");
-style.innerHTML = `
-@keyframes fall {
-  to {
-    transform: translateY(100vh);
-    opacity: 0;
-  }
-}`;
-document.head.appendChild(style);
+    setTimeout(() => { emoji.remove(); }, 8000);
+  }, 900); // slower speed
+});
